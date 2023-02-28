@@ -18,7 +18,7 @@ public class DBConnection {
 				e.printStackTrace();
 			}
 			con = DriverManager.getConnection(url,username,password);
-			System.out.println("Connection established= "+con);
+//			System.out.println("Connection established= "+con);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
