@@ -33,6 +33,14 @@ public class AdminLoginDao {
 	    		
 	    		if(email.equals(emailDB)&& password.equals(passwordDB)&&role.equals("Admin")) {
 	    			return "Admin";
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("AirIndiaAdmin")) {
+	    			return "AirIndia";
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("BristishAdmin")) {
+	    			return "British";
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("EmiratesAdmin")) {
+	    			return "Emirates";
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("QuatarAdmin")) {
+	    			return "Quatar";
 	    		}
 	    		
 	    	}
