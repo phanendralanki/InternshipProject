@@ -11,61 +11,116 @@
 
 <body>
 
-	<% 
-	String Admin = (String)session.getAttribute("Admin");
-    String AirIndia = (String)session.getAttribute("AirIndia");
-    String British = (String)session.getAttribute("British");
-    String Emirates = (String)session.getAttribute("Emirates");
-    String Quatar  = (String)session.getAttribute("Quatar");
+	<%
+	String Admin = (String) session.getAttribute("Admin");
+	String AirIndia = (String) session.getAttribute("AirIndia");
+	String British = (String) session.getAttribute("British");
+	String Emirates = (String) session.getAttribute("Emirates");
+	String Quatar = (String) session.getAttribute("Quatar");
 	%>
-	
-	
-	
-	
-     <div class="container">
-	<div class="row">
-            <div class="col-sm-4">
-            <%if(Admin!=null){ %>
-                <!--form-->
-                <form action="#" method="POST" class="">
 
-                    <div align="left">
-                        <label class="form-label">Admin Name</label>
-                        <input type="text" class="form-control" placeholder="Admin Name" name="name" id="name" required /> 
-                    </div>
 
-                    <div align="left">
-                        <label class="form-label">Email</label>
-                        <input type="text" class="form-control" placeholder="Email" name="course" id="course" required />
-                    </div>
 
-                    <div align="left">
-                        <label class="form-label">Mobile</label>
-                        <input type="text" class="form-control" placeholder="Enter your number" name="fee" id="fee" required />
-                    </div>
-                    <div align="left">
-                        <label class="form-label">Password</label>
-                        <input type="text" class="form-control" placeholder="Enter your password" name="fee" id="fee" required />
-                    </div>
-                    <div align="left">
-                        <label class="form-label">Role</label>
-                        <input type="text" class="form-control" placeholder="Enter your role" name="fee" id="fee" required />
-                    </div>
-                    <br/>
-                    <div align="right">
-                        <input type="button" id="add" value="add" name="add" class="btn btn-info">
-                        <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
 
-                    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<%
+				if (Admin != null) {
+				%>
+				<!--form-->
+				<form action="#" method="POST" class="">
 
-                </form>
-                <%}else{ %>
-                <h2>you are not main admin</h2>
-                <%} %>
-            </div>
-</div>
-</div>
-	
+					<div align="left">
+						<label class="form-label">Admin Name</label> <input type="text"
+							class="form-control" placeholder="Admin Name" name="name"
+							id="name" required />
+					</div>
+
+					<div align="left">
+						<label class="form-label">Email</label> <input type="text"
+							class="form-control" placeholder="Email" name="course"
+							id="course" required />
+					</div>
+
+					<div align="left">
+						<label class="form-label">Mobile</label> <input type="text"
+							class="form-control" placeholder="Enter your number" name="fee"
+							id="fee" required />
+					</div>
+					<div align="left">
+						<label class="form-label">Password</label> <input type="text"
+							class="form-control" placeholder="Enter your password" name="fee"
+							id="fee" required />
+					</div>
+					<div align="left">
+						<label class="form-label">Role</label> <input type="text"
+							class="form-control" placeholder="Enter your role" name="fee"
+							id="fee" required />
+					</div>
+					<br />
+					<div align="right">
+						<input type="button" id="add" value="add" name="add"
+							class="btn btn-info"> <input type="reset" id="reset"
+							value="reset" name="reset" class="btn btn-warning">
+
+					</div>
+
+				</form>
+				<%
+				} else {
+				%>
+				<form action="#" method="POST" class="">
+
+					<div align="left">
+						<label class="form-label">Flight Id:</label> <input type="text"
+							class="form-control" placeholder="flight Id" name="flightId"
+							id="flightId" required />
+					</div>
+
+					<div align="left">
+						<label class="form-label">Flight Name: </label> <input type="text"
+							class="form-control" placeholder="Flight Name" name="flightName"
+							id="flightName" required />
+					</div>
+
+					<div align="left">
+						<label class="form-label">Start point</label> <input type="text"
+							class="form-control" placeholder="start point" name="startPoint"
+							id="fee" required />
+					</div>
+					<div align="left">
+						<label class="form-label">Destination point</label> <input type="text"
+							class="form-control" placeholder="Destination Point" name="destinationPoint"
+							id="destinationPoint" required />
+					</div>
+					<div align="left">
+						<label class="form-label">Seats</label> <input type="text"
+							class="form-control" placeholder="Enter no of seats" name="seats_count"
+							id="seats_count" required />
+					</div>
+					<div align="left">
+						<label class="form-label">Seat Price</label> <input type="text"
+							class="form-control" placeholder="Enter seat price" name="seat_price"
+							id="seat_price" required />
+					</div>
+					
+					<br />
+					<div align="right">
+						<input type="button" id="add" value="add" name="add"
+							class="btn btn-info"> <input type="reset" id="reset"
+							value="reset" name="reset" class="btn btn-warning">
+
+					</div>
+
+				</form>
+				<%
+				}
+				%>
+			</div>
+		</div>
+	</div>
+
 
 	<script src="MyCode/js/bootstrap.min.js"></script>
 </body>
