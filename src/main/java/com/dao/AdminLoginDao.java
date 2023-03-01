@@ -10,8 +10,8 @@ import com.util.DBConnection;
 
 public class AdminLoginDao {
 	public String authenticateAdmin(AdminLoginBean loginBean) {
-		String email = loginBean.getEmail();
-		String password = loginBean.getPassword();
+		String user_email = loginBean.getEmail();
+		String user_password = loginBean.getPassword();
 		
 		Connection con = null;
 //	    Statement statement = null;
@@ -31,15 +31,15 @@ public class AdminLoginDao {
 	    		passwordDB = resultSet.getString("password");
 	    		role = resultSet.getString("role");
 	    		
-	    		if(email.equals(emailDB)&& password.equals(passwordDB)&&role.equals("Admin")) {
+	    		if(user_email.equals(emailDB)&& user_password.equals(passwordDB)&&role.equals("Admin")) {
 	    			return "Admin";
-	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("AirIndiaAdmin")) {
+	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("AirIndiaAdmin")) {
 	    			return "AirIndia";
-	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("BristishAdmin")) {
+	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("BristishAdmin")) {
 	    			return "British";
-	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("EmiratesAdmin")) {
+	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("EmiratesAdmin")) {
 	    			return "Emirates";
-	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("QuatarAdmin")) {
+	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("QuatarAdmin")) {
 	    			return "Quatar";
 	    		}
 	    		
