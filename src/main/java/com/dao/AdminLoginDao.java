@@ -10,12 +10,12 @@ import com.util.DBConnection;
 
 public class AdminLoginDao {
 	public String authenticateAdmin(AdminLoginBean loginBean) {
-		String user_email = loginBean.getEmail();
-		String user_password = loginBean.getPassword();
+		String email = loginBean.getEmail();
+		String password = loginBean.getPassword();
 		
 		Connection con = null;
-//	    Statement statement = null;
-//	    ResultSet resultSet = null;
+	    java.sql.Statement statement = null;
+	    ResultSet resultSet = null;
 	 
 	    String emailDB = "";
 	    String passwordDB = "";
@@ -23,23 +23,23 @@ public class AdminLoginDao {
 	    
 	    try {
 	    	con = DBConnection.getConnection();
-	    	java.sql.Statement statement =  con.createStatement();
-	    	ResultSet resultSet = ((java.sql.Statement) statement).executeQuery("select email,password,role from admins ");
+	    	statement =  con.createStatement();
+	    	resultSet = statement.executeQuery("select email,password,role from admins ");
 	    
 	    	while(resultSet.next()) {
 	    		emailDB = resultSet.getString("email");
 	    		passwordDB = resultSet.getString("password");
 	    		role = resultSet.getString("role");
 	    		
-	    		if(user_email.equals(emailDB)&& user_password.equals(passwordDB)&&role.equals("Admin")) {
+	    		if(email.equals(emailDB)&& password.equals(passwordDB)&&role.equals("Admin")) {
 	    			return "Admin";
-	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("AirIndiaAdmin")) {
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("AirIndiaAdmin")) {
 	    			return "AirIndia";
-	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("BristishAdmin")) {
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("BristishAdmin")) {
 	    			return "British";
-	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("EmiratesAdmin")) {
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("EmiratesAdmin")) {
 	    			return "Emirates";
-	    		}else if(user_email.equals(emailDB)&&user_password.equals(passwordDB)&&role.equals("QuatarAdmin")) {
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("QuatarAdmin")) {
 	    			return "Quatar";
 	    		}
 	    		

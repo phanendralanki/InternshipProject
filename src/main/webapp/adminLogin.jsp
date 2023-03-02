@@ -16,7 +16,7 @@
 				<form class="form-control" action="AdminLoginServlet" method="post">
 					<div>
 						<label class="form-label">Email:</label> <input type="text"
-							class="form-control" name="email" />
+							class="form-control" name="email" autocomplete="off"/>
 					</div>
 					<div>
 						<label class="form-label">password:</label> <input type="password"

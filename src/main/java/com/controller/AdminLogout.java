@@ -18,11 +18,11 @@ public class AdminLogout extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-        	HttpSession session = request.getSession();
-            session.removeAttribute("Admin");
-            session.removeAttribute("user_email");
-            session.invalidate();
-            response.sendRedirect("adminLogin.jsp");
+//        	HttpSession session = request.getSession();
+//            session.removeAttribute("Admin");
+//            session.removeAttribute("user_email");
+//            session.invalidate();
+//            response.sendRedirect("adminLogin.jsp");
         
 	}
 
