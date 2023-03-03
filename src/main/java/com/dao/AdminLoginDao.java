@@ -31,9 +31,9 @@ public class AdminLoginDao {
 	    		passwordDB = resultSet.getString("password");
 	    		role = resultSet.getString("role");
 	    		
-	    		if(email.equals(emailDB)&& password.equals(passwordDB)&&role.equals("Admin")) {
+	    		if(email.equals(emailDB)&& password.equals(passwordDB)&&role.equalsIgnoreCase("Admin")) {
 	    			return "Admin";
-	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("AirIndiaAdmin")) {
+	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equalsIgnoreCase("AirIndiaAdmin")) {
 	    			return "AirIndia";
 	    		}else if(email.equals(emailDB)&&password.equals(passwordDB)&&role.equals("BristishAdmin")) {
 	    			return "British";
