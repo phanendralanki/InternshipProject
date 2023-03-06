@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +16,7 @@
 <div class="container">
 	<div class="row">
 	<div class="col-sm-4">
-	<form action="RegisterServlet" class="form">
+	<form action="RegisterServlet" class="form" method="post">
 		<div>
 			<label class="form-label">name</label>
 			<input type="text" name="user_name" placeholder="Enter your name" class="form-control" />
@@ -43,6 +41,7 @@
 			<button type="submit" class="btn btn-primary">submit</button>
 			<button type="reset" class="btn btn-danger">reset</button>
 		</div>
+		
 	</form>
 	</div>
 	</div>

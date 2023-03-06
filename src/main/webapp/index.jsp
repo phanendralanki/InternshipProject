@@ -14,7 +14,9 @@
 <body>
 	<a href="adminLogin.jsp">AdminLogin</a> <br/><br/>
 
-	<a href="register.jsp">Register</a>
+	<a href="register.jsp">Register</a> <br/><br/>
+	
+	<a href="login.jsp">Login</a>
 	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
