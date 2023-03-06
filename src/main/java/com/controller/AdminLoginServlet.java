@@ -45,7 +45,6 @@ public class AdminLoginServlet extends HttpServlet {
                   session = request.getSession(); //Creating a session
                   session.setAttribute("AirIndia", email); //setting session attribute
                   request.setAttribute("email", email);
-                  
                   request.getRequestDispatcher("./Admin.jsp").forward(request, response);
                   break;
               case "British":
