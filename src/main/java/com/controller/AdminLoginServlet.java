@@ -38,8 +38,9 @@ public class AdminLoginServlet extends HttpServlet {
               case "Admin":
                   session = request.getSession(); //Creating a session
                   session.setAttribute("Admin", email); //setting session attribute
-                  request.setAttribute("email", email);
-                  request.getRequestDispatcher("./MainAdmin.jsp").forward(request, response);
+                  //request.setAttribute("email", email);
+                  //request.getRequestDispatcher("./MainAdmin.jsp").forward(request, response);
+                  response.sendRedirect("./MainAdmin.jsp");
                   break;
               case "AirIndia":
                   session = request.getSession(); //Creating a session
