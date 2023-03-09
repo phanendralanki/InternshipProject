@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.*" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,9 @@
 	<a href="register.jsp">Register</a> <br/><br/>
 	
 	<a href="login.jsp">Login</a>
+	
+	
+	
 	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

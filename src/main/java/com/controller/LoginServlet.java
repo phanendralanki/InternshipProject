@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -35,7 +36,9 @@ public class LoginServlet extends HttpServlet {
 		String userValidate = loginDao.authenticateUser(loginBean);
 		
 		if(userValidate.equals("success")) {
-			request.getRequestDispatcher("./home.jsp").forward(request, response);
+			HttpSession session = request.getSession();
+	         session.setAttribute("user_email", user_email);
+	         response.sendRedirect("home.jsp");
 		}else {
 			request.getRequestDispatcher("./login.jsp").forward(request,response);
 		}
