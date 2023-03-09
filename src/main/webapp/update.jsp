@@ -1,43 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*"%>
-
-
-<%
-	if (request.getParameter("add") != null) {
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String mobile = request.getParameter("mobile");
-		String password = request.getParameter("password");
-		String role = request.getParameter("role");
-
-		Connection con;
-		// PreparedStatement pst;
-		ResultSet rs;
-
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo", "root", "user");
-		PreparedStatement pst = con.prepareStatement("update admins set name=?,email=?,mobile=?,password=?,role=? where id=?");
-
-		pst.setString(1, name);
-		pst.setString(2, email);
-		pst.setString(3, mobile);
-		pst.setString(4, password);
-		pst.setString(5, role);
-		pst.setString(6,id);
-
-		pst.executeUpdate();
-	%>
-
-	<script>
-		alert("record updated");
-	</script>
-	<%
-	}
-	%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,56 +18,56 @@
 			<form action="#" method="POST" class="">
 
 				<%
-				Connection con;
+				Connection connection;
 				PreparedStatement pst;
-				ResultSet rs;
+				ResultSet res;
 
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo", "root", "user");
+				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo", "root", "user");
 
 				String id = request.getParameter("id");
-				pst = con.prepareStatement("select *from admins where id=?");
+				pst = connection.prepareStatement("select *from admins where id=?");
 				pst.setString(1, id);
 
-				rs = pst.executeQuery();
+				res = pst.executeQuery();
 
-				while (rs.next()) {
+				while (res.next()) {
 				%>
 				<div align="left">
 					<label class="form-label">Admin name: </label> <input type="text"
 						class="form-control" placeholder="Admin name" name="name"
-						id="name" required autocomplete="off" value="<%= rs.getString("name") %> "/>
+						id="name" required autocomplete="off" value="<%= res.getString("name") %> "/>
 				</div>
 
 				<div align="left">
 					<label class="form-label">Admin Email: </label> <input type="text"
 						class="form-control" placeholder="Email" name="email" id="email"
-						required autocomplete="off" value="<%= rs.getString("email") %> " />
+						required autocomplete="off" value="<%= res.getString("email") %> " />
 				</div>
 
 				<div align="left">
 					<label class="form-label">Mobile:</label> <input type="text"
 						class="form-control" placeholder="Mobile" name="mobile"
-						id="startPoint" required autocomplete="off" value="<%= rs.getString("mobile") %> " />
+						id="startPoint" required autocomplete="off" value="<%= res.getString("mobile") %> " />
 				</div>
 				<div align="left">
 					<label class="form-label">Password:</label> <input type="text"
 						class="form-control" placeholder="password" name="password"
 						id="password" required autocomplete="off"
-						value="<%=rs.getString("password")%> " />
+						value="<%=res.getString("password")%> " />
 				</div>
 				<div align="left">
 					<label class="form-label">role:</label> <input type="text"
 						class="form-control" placeholder="Enter role" name="role"
 						id="role" required autocomplete="off"
-						value="<%=rs.getString("role")%> " />
+						value="<%=res.getString("role")%> " />
 				</div>
 				<%
 				}
 				%>
 				<br />
 				<div align="right">
-					<input type="submit" id="add" value="add" name="add"
+					<input type="submit" id="add" value="update" name="add"
 						class="btn btn-info"> <input type="reset" id="reset"
 						value="reset" name="reset" class="btn btn-warning" />
 				</div>
@@ -122,6 +85,40 @@
 		</div>
 	</div>
 
+	
+<%
+	if (request.getParameter("add") != null) {
+	
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String mobile = request.getParameter("mobile");
+		String password = request.getParameter("password");
+		String role = request.getParameter("role");
+
+		Connection con;
+		// PreparedStatement pst;
+		ResultSet rs;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo", "root", "user");
+		PreparedStatement pest = con.prepareStatement("update admins set name=?,email=?,mobile=?,password=?,role=? where id=?");
+
+		pest.setString(1, name);
+		pest.setString(2, email);
+		pest.setString(3, mobile);
+		pest.setString(4, password);
+		pest.setString(5, role);
+		pest.setString(6,id);
+
+		pest.executeUpdate();
+	%>
+
+	<script>
+		alert("record updated");
+	</script>
+	<%
+	}
+	%>
 	
 
 	<script
