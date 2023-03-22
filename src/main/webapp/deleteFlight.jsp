@@ -17,8 +17,7 @@
 		pst.setString(1,id);
 
 		pst.executeUpdate();
+		response.sendRedirect("MainAdmin.jsp");
 	%>
 
-	<script>
-		alert("record deleted");
-	</script>
+	

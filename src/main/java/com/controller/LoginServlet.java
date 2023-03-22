@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		if(userValidate.equals("success")) {
 			HttpSession session = request.getSession();
 	         session.setAttribute("user_email", user_email);
-	         response.sendRedirect("home.jsp");
+	         response.sendRedirect("index.jsp");
 		}else {
 			request.getRequestDispatcher("./login.jsp").forward(request,response);
 		}

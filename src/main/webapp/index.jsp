@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*" %>	
+<%@page import="com.bean.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +11,45 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
+	crossorigin="anonymous">	
 </head>
 <body>
+	<%@include file="includes/navbar.jsp" %>
+
 	<a href="adminLogin.jsp">AdminLogin</a> <br/><br/>
 
 	<a href="register.jsp">Register</a> <br/><br/>
 	
 	<a href="login.jsp">Login</a>
+	<!--  
+	
+	<%
+		if(session.getAttribute("user_email")!=null){
+		
+				
+	%>
+	
+		<h3>succesfully logged in</h3>
+	
+	<% } %>
+	-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

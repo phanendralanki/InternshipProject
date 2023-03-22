@@ -21,11 +21,17 @@
 	<%
 	if (Admin != null) {
 	%>
+	<!-- 
 	<nav class="nav navbar bg-primary text-white text-center">
 	<div align="center">
 	<h3>Welcome main Admin ${Admin}</h3>
 	</div>
-</nav>
+	</nav> -->
+	
+	<%@include file="includes/navbar.jsp" %>
+
+	<!--  
+	
 <div class="container mt-3">
 	<div class="row">
 		<div class="col-sm-4">
@@ -68,13 +74,10 @@
 
 			</form>
 
-			<!-- 
-				<div>
-					<a href="AdminLogout.java">Logout</a>
-				</div>
-				 -->
-
-		</div>
+			</div>
+			-->
+			
+			<!--
 		<div class="col-xs-12 col-sm-8 col-md-6 col-lg-4  mt-3">
 			<div class="panel-body">
 				<table id="tbl-admin" class="table table-responsive table-bordered"
@@ -92,7 +95,7 @@
 
 						<%
 						Connection connection;
-						// PreparedStatement pst;
+						
 						ResultSet result;
 
 						Class.forName("com.mysql.cj.jdbc.Driver");
@@ -127,43 +130,69 @@
 		</div>
 	</div>
 	
+	-->
+	
+	<div class="container mt-5">
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm-12">
 			<h3>Add Flight details</h3>
-			<form action="#" method="POST" class="">
+			<form action="addFlights" method="POST" class="mt-2" enctype="multipart/form-data">
+			
+					<div class="card mt-3">
+					<div class="card-body">
+						<div class="mb-3">
+								<p class="text-center fs-3">Details</p>
+								
+								
+								<% 
+									String msg = (String)session.getAttribute("msg");
+									if(msg!=null){%>
+									<h4 class="text-center text-success"><%=msg%></h4>
+								<% 
+									session.removeAttribute("msg");
+									}%>
+								
+								<label>Image</label> <input type="file" name="file"
+									class="form-control" required> 
+							</div>
+					</div>
+					</div>
+				
 
-					<div align="left">
+					<div align="left" class="mt-2">
 						<label class="form-label">Flight Id:</label> <input type="text"
 							class="form-control" placeholder="flight Id" name="flightId"
-							id="flightId" required />
+							id="flightId" autocomplete="off" required />
 					</div>
 
 					<div align="left">
 						<label class="form-label">Flight Name: </label> <input type="text"
 							class="form-control" placeholder="Flight Name" name="flightName"
-							id="flightName" required />
+							id="flightName" autocomplete="off" required />
 					</div>
 
 					<div align="left">
 						<label class="form-label">Start point</label> <input type="text"
 							class="form-control" placeholder="start point" name="startPoint"
-							id="startPoint" required />
+							id="startPoint" autocomplete="off" required />
 					</div>
 					<div align="left">
 						<label class="form-label">Destination point</label> <input
 							type="text" class="form-control" placeholder="Destination Point"
-							name="destinationPoint" id="destinationPoint" required />
+							name="destinationPoint" id="destinationPoint" autocomplete="off" required />
 					</div>
 					<div align="left">
 						<label class="form-label">Seats</label> <input type="text"
 							class="form-control" placeholder="Enter no of seats"
-							name="seats_count" id="seats_count" required />
+							name="seats_count" id="seats_count" autocomplete="off" required />
 					</div>
 					<div align="left">
 						<label class="form-label">Seat Price</label> <input type="text"
 							class="form-control" placeholder="Enter seat price"
-							name="seat_price" id="seat_price" required />
+							name="seat_price" id="seat_price" autocomplete="off" required />
 					</div>
+					
+					
 
 					<br />
 					<div align="right">
@@ -171,17 +200,18 @@
 							class="btn btn-info"> <input type="reset" id="reset"
 							value="reset" name="reset" class="btn btn-warning"/>
 					</div>
-
+				
 				</form>
 				
 		</div>
 	
 	
-	<div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 mt-5">
+	<div class="col-sm-12 mt-5">
 			<div class="panel-body">
 				<table id="tbl-admin" class="table table-responsive table-bordered" cellpadding="0" width="100%">
 					<thead>
 						<tr>
+							<th>Flight Image</th>
 							<th>flightId</th>
 							<th>flightName</th>
 							<th>startPoint</th>
@@ -212,6 +242,7 @@
 						%>
 
 						<tr>
+							<td><img alt="" src="images/<%=res.getString("flightImage") %>" width="200px" height="100px"></td>
 							<td><%=res.getString("flightId") %></td>
 							<td><%=res.getString("flightName") %></td>
 							<td><%=res.getString("startPoint") %></td>
@@ -237,70 +268,6 @@
 	<%
 	}
 	%>
-
-	<%
-	if (request.getParameter("add") != null) {
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String mobile = request.getParameter("mobile");
-		String password = request.getParameter("password");
-		String role = request.getParameter("role");
-
-		Connection con;
-		// PreparedStatement pst;
-		ResultSet rs;
-
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo", "root", "user");
-		PreparedStatement pst = con.prepareStatement("insert into admins(name,email,mobile,password,role) values(?,?,?,?,?)");
-
-		pst.setString(1, name);
-		pst.setString(2, email);
-		pst.setString(3, mobile);
-		pst.setString(4, password);
-		pst.setString(5, role);
-
-		pst.executeUpdate();
-	%>
-
-	<script>
-		alert("record added");
-	</script>
-	<%
-	}
-	%>
-
-	<% 
-					if(request.getParameter("submit")!=null){
-						String flightId = request.getParameter("flightId");
-						String flightName = request.getParameter("flightName");
-						String startPoint = request.getParameter("startPoint");
-						String destinationPoint = request.getParameter("destinationPoint");
-						String seats_count = request.getParameter("seats_count");
-						String seat_price = request.getParameter("seat_price");
-						
-							Connection connect;
-					       // PreparedStatement pst;
-					        ResultSet resu;
-					        
-					        Class.forName("com.mysql.cj.jdbc.Driver");
-					        connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo","root","user");
-					        
-					        PreparedStatement pst = connect.prepareStatement("insert into flightDetails(flightId,flightName,startPoint,destinationPoint,seats_count,seat_price) values(?,?,?,?,?,?)");
-					    
-					        pst.setString(1,flightId);
-					        pst.setString(2,flightName);
-					        pst.setString(3,startPoint);
-					        pst.setString(4,destinationPoint);
-					        pst.setString(5,seats_count);
-					       	pst.setString(6,seat_price); 
-					        pst.executeUpdate();
-						%>
-						
-						<script>
-							alert("record added");
-						</script>
-					<% }%>
 
 
 	<script

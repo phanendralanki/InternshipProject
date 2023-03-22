@@ -33,7 +33,18 @@
 
 				while (res.next()) {
 				%>
-					<div align="left">
+				
+					<div class="card mt-3">
+					<div class="card-body">
+						<div class="mb-3">
+								<p class="text-center fs-3">Details</p>
+								<label>Image</label> <input type="file" name="file"
+									class="form-control" required value="<%=res.getString("flightImage") %>"> 
+							</div>
+					</div>
+					</div>
+				
+					<div align="left" class="mt-2">
 						<label class="form-label">Flight Id:</label> <input type="text"
 							class="form-control" placeholder="flight Id" name="flightId"
 							id="flightId" value="<%=res.getString("flightId")%>" />
@@ -97,6 +108,7 @@
 		String destinationPoint = request.getParameter("destinationPoint");
 		String seats_count = request.getParameter("seats_count");
 		String seat_price = request.getParameter("seat_price");
+		String flightImage = request.getParameter("flightImage");
 
 		Connection con;
 		// PreparedStatement pst;
@@ -105,7 +117,7 @@
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pavo", "root", "user");
 		
-		PreparedStatement pst = con.prepareStatement("update flightDetails set flightId=?, flightName=?,startPoint=?,destinationPoint=?,seats_count=?,seat_price=? where id=? ");
+		PreparedStatement pst = con.prepareStatement("update flightDetails set flightId=?, flightName=?,startPoint=?,destinationPoint=?,seats_count=?,seat_price=?,flightImage=? where id=? ");
 		
 		pst.setString(1, flightId);
 		pst.setString(2, flightName);
@@ -113,16 +125,13 @@
 		pst.setString(4, destinationPoint);
 		pst.setString(5, seats_count);
 		pst.setString(6, seat_price);
-		pst.setString(7,id);
+		pst.setString(7,flightImage);
+		pst.setString(8,id);
 		pst.executeUpdate();
-	%>
-
-	<script>
-		alert("record added");
-	</script>
-	<%
+		response.sendRedirect("MainAdmin.jsp");
 	}
 	%>
+
 
 </body>
 </html>
