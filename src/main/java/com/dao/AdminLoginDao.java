@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.bean.AdminLoginBean;
-import com.mysql.cj.xdevapi.Statement;
+
 import com.util.DBConnection;
 
 public class AdminLoginDao {

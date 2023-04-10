@@ -1,6 +1,7 @@
+<%@page import="com.controller.*" %>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Pavo Airlines</a>
+    <a class="navbar-brand" href="index.jsp">Pavo Airlines</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +15,10 @@
         </li>
          <% if(session.getAttribute("user_email")==null){%>
         <li class="nav-item">
-          <a class="nav-link active" href="login.jsp">Login</a>
+          <a class="nav-link active" href="<%=JSPLinks.LoginServlet%>">Login</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" href="<%=JSPLinks.RegisterServlet%>">Register Here</a>
         </li>
         
         <%} %>
@@ -24,6 +28,9 @@
         </li>
         
         <%} %>
+        
+        
+      
         
       </ul>
     </div>

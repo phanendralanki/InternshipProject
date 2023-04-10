@@ -7,21 +7,28 @@ import java.io.IOException;
 import com.bean.RegisterBean;
 import com.dao.RegisterDao;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 //import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
+@WebServlet(name="RegisterServlet",urlPatterns= {"/RegisterServlet"})
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public RegisterServlet() {
-		// TODO Auto-generated constructor stub
+	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(JSPLinks.RegistrationView);
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String error_message = "There is a problem with your email or mobile";
 		// Copying all the input parameters in to local variables
 		String user_name = request.getParameter("user_name");
 		String user_email = request.getParameter("user_email");
@@ -41,11 +48,12 @@ public class RegisterServlet extends HttpServlet {
 
 		if (userRegistered.equals("SUCCESS")) // On success, you can display a message to user on Home page
 		{
+			
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		} else // On Failure, display a meaningful message to the User.
 		{
-			request.setAttribute("errMessage", userRegistered);
-			request.getRequestDispatcher("/Register.jsp").forward(request, response);
+			session.setAttribute("error-msg", error_message);
+			request.getRequestDispatcher("/register.jsp").forward(request, response);
 		}
 
 	}

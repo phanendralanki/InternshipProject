@@ -24,7 +24,7 @@ public class AdminLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-
+		
 		AdminLoginBean loginBean = new AdminLoginBean();
 
 		loginBean.setEmail(email);
@@ -32,15 +32,15 @@ public class AdminLoginServlet extends HttpServlet {
 
 		AdminLoginDao login = new AdminLoginDao();
 		HttpSession session = null;
+		String role;
 		try {
 			String validate = login.authenticateAdmin(loginBean);
 			  switch (validate) {
               case "Admin":
+            	  role="Admin";
                   session = request.getSession(); //Creating a session
-                  session.setAttribute("Admin", email); //setting session attribute
-                  //request.setAttribute("email", email);
-                  //request.getRequestDispatcher("./MainAdmin.jsp").forward(request, response);
-                  response.sendRedirect("./MainAdmin.jsp");
+                  session.setAttribute("Admin",role);
+                  response.sendRedirect("./AdminWorking.jsp");
                   break;
               case "AirIndia":
                   session = request.getSession(); //Creating a session

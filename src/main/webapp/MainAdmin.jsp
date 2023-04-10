@@ -10,14 +10,15 @@
 
 </head>
 <body>
-	<%
+	<% 
 	String Admin = (String) session.getAttribute("Admin");
 	String AirIndia = (String) session.getAttribute("AirIndia");
 	String British = (String) session.getAttribute("British");
 	String Emirates = (String) session.getAttribute("Emirates");
 	String Quatar = (String) session.getAttribute("Quatar");
 	%>
-
+	
+	
 	<%
 	if (Admin != null) {
 	%>
@@ -28,7 +29,7 @@
 	</div>
 	</nav> -->
 	
-	<%@include file="includes/navbar.jsp" %>
+	<%@include file="JSP/header.jsp" %>
 
 	<!--  
 	
@@ -131,7 +132,10 @@
 	</div>
 	
 	-->
-	
+	<% 
+	String role = (String)session.getAttribute("role");
+	%>
+	<h2><%=role %></h2>
 	<div class="container mt-5">
 	<div class="row">
 		<div class="col-sm-12">
@@ -268,8 +272,6 @@
 	<%
 	}
 	%>
-
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

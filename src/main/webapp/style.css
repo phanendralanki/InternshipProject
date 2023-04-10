@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+.login-btn {
+	margin-top: 15px;
+	background-color: blue;
+	color: white;
+	text-align: center;
+	font-weight: 700;
+	border: none;
+	border-radius: 7px;
+	width: 60px;
+	height: 36px;
+	cursor: pointer;
+	text-align: center;
+	justify-content: center;
+	transition: opacity 2s, box-shadow 1s;
+}
+
+.login-btn:hover {
+	opacity: 0.6;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.loging-btn:active {
+	opacity: 0.3;
+}
+
+.error-msg {
+	color: red;
+	font-weight: bold;
+}

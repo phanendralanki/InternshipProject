@@ -2,11 +2,23 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.*" %>	
 <%@page import="com.bean.*" %>
+<%@page import="com.controller.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Pavo AirLines</title>
+<style>
+	.center{
+		margin:15px;
+	}
+	.center a{
+		text-decoration:none;
+	}
+	.navlink{
+		background-color:rgba(0,0,0,0.15);
+	}
+</style>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -14,46 +26,9 @@
 	crossorigin="anonymous">	
 </head>
 <body>
-	<%@include file="includes/navbar.jsp" %>
+	<%@include file="JSP/header.jsp"%>
 
-	<a href="adminLogin.jsp">AdminLogin</a> <br/><br/>
 
-	<a href="register.jsp">Register</a> <br/><br/>
-	
-	<a href="login.jsp">Login</a>
-	<!--  
-	
-	<%
-		if(session.getAttribute("user_email")!=null){
-		
-				
-	%>
-	
-		<h3>succesfully logged in</h3>
-	
-	<% } %>
-	-->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

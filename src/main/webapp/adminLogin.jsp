@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Admin Login</title>
 <link rel="stylesheet" href="MyCode/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 							class="form-control" name="password" />
 					</div>
 					<div class="align-right mt-3">
-						<input type="submit" value="submit" class="btn btn-primary">
+						<input type="submit" value="submit"  class="button">
 					</div>
 				</form>
 			</div>
